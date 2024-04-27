@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/gofiber/fiber/v2"
+	ngrambe "github.com/limahfud/learn-go-fiber/ngawi/sine"
 )
 
 func main() {
@@ -20,7 +21,8 @@ func main() {
 	})
 
 	app.Get("/greeting", func(c *fiber.Ctx) error {
-		return c.SendString("Good Morning, World!")
+		greeting := ngrambe.ExampleFunction("ALI")
+		return c.SendString("Good Morning, World! " + greeting + "Anything about this song " + os.Getenv("THE_SONG"))
 	})
 
 	port := os.Getenv("PORT")
